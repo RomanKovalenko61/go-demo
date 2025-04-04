@@ -18,6 +18,10 @@ func main() {
 	fmt.Scan(&userKg)
 
 	IMT := userKg / math.Pow(userHeight / 100, IMTPower)
+	outputResult(IMT)
+}
+
+func outputResult(IMT float64) {
 	result := fmt.Sprintf("Ваш индекс массы тела: %.0f", IMT)
 	fmt.Print(result)
 }
