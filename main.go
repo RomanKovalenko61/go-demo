@@ -11,15 +11,23 @@ func main() {
 	fmt.Println("___ Калькулятор индекса массы тела ___")
 	userKg, userHeight := getUserInput()
 	IMT := calculateIMT(userKg, userHeight)
+	outputResult(IMT)
 	if IMT < 16 {
 		fmt.Println("У вас сильный дефицит массы тела")
+	} else if IMT < 18.5 {
+		fmt.Println("У вас дефицит массы тела")
+	} else if IMT < 25 {
+		fmt.Println("У вас нормальный всес")
+	} else if IMT < 30 {
+		fmt.Println("У вас избыточный вес")
+	} else {
+		fmt.Println("У вас степень ожирения")
 	}
-	outputResult(IMT)
 }
 
 func outputResult(IMT float64) {
 	result := fmt.Sprintf("Ваш индекс массы тела: %.0f", IMT)
-	fmt.Print(result)
+	fmt.Println(result)
 }
 
 func calculateIMT(userKg float64, userHeight float64) (IMT float64) {
