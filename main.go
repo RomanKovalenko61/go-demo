@@ -12,7 +12,7 @@ func main() {
 	userKg, userHeight := getUserInput()
 	IMT := calculateIMT(userKg, userHeight)
 	if IMT < 16 {
-		fmt.Println("У вас едостаток веса")
+		fmt.Println("У вас сильный дефицит массы тела")
 	}
 	outputResult(IMT)
 }
