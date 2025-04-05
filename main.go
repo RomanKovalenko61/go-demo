@@ -8,7 +8,10 @@ import (
 const IMTPower = 2
 
 func main() {
-	for i:= 0; i < 10; i++ {
+	for i := 0; i < 10; i++ {
+		if i == 5 {
+			continue
+		}
 		fmt.Printf("%d\n", i)
 	}
 
