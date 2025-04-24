@@ -9,6 +9,11 @@ import (
 const IMTPower = 2
 
 func main() {
+	defer func() {
+		if r := recover(); r != nil {
+			fmt.Println("Recover: ", r)
+		}
+	}()
 	fmt.Println("___ Калькулятор индекса массы тела ___")
 	for {
 		userKg, userHeight := getUserInput()
@@ -16,14 +21,14 @@ func main() {
 		if err != nil {
 			//fmt.Println(err)
 			//continue
-			panic(err) // or any string
+			panic("Не заданы параметры для расчета") // or any string
 		}
 		outputResult(IMT)
 		isRepeatCalculation := checkRepeatCalculation()
 		if !isRepeatCalculation {
 			break
 		}
-	}	
+	}
 }
 
 func outputResult(IMT float64) {
@@ -47,7 +52,7 @@ func calculateIMT(userKg float64, userHeight float64) (float64, error) {
 	if userKg <= 0 || userHeight <= 0 {
 		return 0, errors.New("WRONG_PARAMETERS")
 	}
-	IMT := userKg / math.Pow(userHeight / 100, IMTPower)
+	IMT := userKg / math.Pow(userHeight/100, IMTPower)
 	return IMT, nil
 }
 
@@ -66,7 +71,7 @@ func checkRepeatCalculation() bool {
 	fmt.Println("Вы хотите сделать еще расчет (y/n): ")
 	fmt.Scan(&userChoise)
 	if userChoise == "y" || userChoise == "Y" {
-			return true
+		return true
 	}
 	return false
 }
